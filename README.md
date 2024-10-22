@@ -19,3 +19,11 @@ synnoraxon (not used):
 
 Same as Bitalino one.
 
+heartrate.m:
+
+Heartrate.m This algorithm is used for calculating heart rate, It is based on peterhcharlton dataset. Before running Heartrate.m, you need to download all files from
+
+https://github.com/peterhcharlton/ppg-beats
+
+And put Heartrate.m into the folder, then you can run it.
+
