@@ -1,6 +1,17 @@
 # sensor-chair
 This reposity is for the CExAM project: Sensor chair. It contains all codings for measurement and calculation.
 
+The processing:
+
+Setting up the arduino (IF everything is fine, you can see intial success in thw window. Attention, you need to change the file name each time) and Bitalino.
+
+Synchronized Arduino and Bitalino raw data
+
+Calculate all the results
+
+
+
+
 Measurement Coding:
 
 Measuremen coding is based on the Arduino Ino. It consist of pressure sensors, EDA sensors, PPG sensros, microphones, LED, sunchronized signal, siwtch. In order to run the program, you need to install all the files in the totalsensor folder. In this folder, totalsensor.ino is main file. Just run it in the Arduino Ino.
