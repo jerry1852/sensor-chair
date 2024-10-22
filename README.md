@@ -11,4 +11,7 @@ respiratory_cal：
 
 This algorithm is used for calculating breathing rate using the pressure data. In the coding, I used two different methods to get the result. One is autocorrelation corresponding to the Microsoft's paper. Another is main lobe spectrum. Besides these two methods, there is one more method using peak detections, but not in this coding. 
 
+syns.m: (under development)
+
+This algorithm is used for synchronized the Bitalino signal and subtract the breating belt data, ECG data and EDA data. It is based on the time stamp. However, for the later design, we can use synchronized signal for Bitalino. So we need do some adjustment. 
 
