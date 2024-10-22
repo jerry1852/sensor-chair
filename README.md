@@ -15,3 +15,7 @@ syns.m: (under development)
 
 This algorithm is used for synchronized the Bitalino signal and subtract the breating belt data, ECG data and EDA data. It is based on the time stamp. However, for the later design, we can use synchronized signal for Bitalino. So we need do some adjustment. 
 
+synnoraxon (not used):
+
+Same as Bitalino one.
+
