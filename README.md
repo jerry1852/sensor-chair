@@ -27,3 +27,15 @@ https://github.com/peterhcharlton/ppg-beats
 
 And put Heartrate.m into the folder, then you can run it.
 
+chairsyns.m:
+
+This algorithm is used to sunchronized chair signal. The only thing that you should input is the arduino csv data.;) And also convert and standardlized the  raw EDA data.
+
+EDA_cal.m:
+
+This algorithm is used to calculate EDA precision, recall and F1. It need csv file from Visual studio.
+
+
+
+
+
