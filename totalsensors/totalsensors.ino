@@ -59,6 +59,7 @@ const int micropin = A10;
 
 // led setting
 int LED=9;
+int LED2=6;
 
 
 // switch
@@ -165,8 +166,10 @@ void loop() {
   
   if (synstate>=500){
     digitalWrite(LED, HIGH);
+    digitalWrite(LED2, HIGH);
   }else{
     digitalWrite(LED, LOW);
+    digitalWrite(LED2, LOW);
   }
   
   // force sensors
