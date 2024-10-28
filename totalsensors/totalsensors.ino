@@ -4,9 +4,9 @@
 #include "RTClib.h"
 #include <SPI.h>
 #include <SD.h>
-#include <DFRobot_MLX90614.h>
-#include "DFRobot_BloodOxygen_S.h"
-#include <LedFlasher.h>
+// #include <DFRobot_MLX90614.h>
+// #include "DFRobot_BloodOxygen_S.h"
+// #include <LedFlasher.h>
 
 #include "max30102.h"
 
@@ -221,7 +221,7 @@ void loop() {
 
 
 
-  String data = String(nowtime) + ',' + String(value1) + ',' + String(value2) + ',' + String(value3) + ',' + String(value4) + ',' \
+  String data = String(nowtime) + ',' + String(value2) + ',' + String(value4) + ',' \
    + String(gsr_average) + ',' + String(gsr_average2) + ',' + String(wavevalue) + ',' + String(red) + ',' + String(ir)\
    +","+String(state)+","+String(synstate);
    //testswitchstate改为synstate
