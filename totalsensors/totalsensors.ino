@@ -1,12 +1,12 @@
 // This coding is based on the opening source project: RTC library in arduino library to get the real time.
 
 // this clock is about 1 or 3s later than exact time, try to find the reason, maybe due to the speed of INTERNET or the connection of chips.
-#include "RTClib.h"
-#include <SPI.h>
-#include <SD.h>
-// #include <DFRobot_MLX90614.h>
-// #include "DFRobot_BloodOxygen_S.h"
-// #include <LedFlasher.h>
+#include "RTClib.h" //real time clock
+#include <SPI.h>   // IIC protocol
+#include <SD.h>    //sd card
+//#include <DFRobot_MLX90614.h>   // temperature
+//#include "DFRobot_BloodOxygen_S.h"  // oximeter (we don't need it anymore)
+//#include <LedFlasher.h>  // we don't need it.
 
 #include "max30102.h"
 
@@ -59,8 +59,8 @@ const int micropin = A10;
 
 // led setting
 int LED=9;
-int LED2=6;
 
+int LED2=6;
 
 // switch
 const int switchPin = 2; 
@@ -79,11 +79,24 @@ uint32_t aun_red_buffer[BUFFER_SIZE]; // Red LED sensor data
 int testswitch = 5;
 
 // synchronized signl
- const int Syn=A14;
- int synstate;
+ const int Syn=A15;
+int synstate;
+const int outputPin = 12;  
+const int threshold = 50; 
+const unsigned long duration = 500; 
+bool peakDetected = false;
+unsigned long peakTime = 0;
+const int monitorPin = A14; 
+int voltage;
+
+
+
 
 void setup() {
   Serial.begin(500000);
+  pinMode(Syn, INPUT);
+  pinMode(outputPin, OUTPUT);
+  digitalWrite(outputPin, LOW);
   //rtc.adjust(DateTime(2024, 5, 23, 17, 30, 55));
   // time clock
   if (!rtc.begin()) {
@@ -148,6 +161,7 @@ void setup() {
 
 
   pinMode(LED, OUTPUT);
+  pinMode(LED2, OUTPUT);
 
 }
 
@@ -163,8 +177,20 @@ void loop() {
 
   //syn
   synstate=analogRead(Syn);
+  // if (synstate > threshold && !peakDetected) {
+  //   peakDetected = true;     
+  //   peakTime = millis();       
+  //   digitalWrite(outputPin, HIGH); 
+  // }
+
+
+  // if (peakDetected && (millis() - peakTime >= duration)) {
+  //   digitalWrite(outputPin, LOW); 
+  //   peakDetected = false;       
+  // }
+  // voltage=analogRead(monitorPin);
   
-  if (synstate>=500){
+  if (synstate>=100){
     digitalWrite(LED, HIGH);
     digitalWrite(LED2, HIGH);
   }else{
@@ -224,7 +250,7 @@ void loop() {
   String data = String(nowtime) + ',' + String(value2) + ',' + String(value4) + ',' \
    + String(gsr_average) + ',' + String(gsr_average2) + ',' + String(wavevalue) + ',' + String(red) + ',' + String(ir)\
    +","+String(state)+","+String(synstate);
-   //testswitchstate改为synstate
+   //testswitchstate改为synstate voltage
 
 
 
